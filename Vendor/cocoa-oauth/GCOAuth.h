@@ -56,6 +56,11 @@
 }
 
 /*
+ Concatenate host and port for URL
+ */
++ (NSString *)hostAndPortFromURL:(NSURL *)url;
+
+/*
  Set the user agent to be used for all requests.
  */
 + (void)setUserAgent:(NSString *)agent;

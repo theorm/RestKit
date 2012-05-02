@@ -339,12 +339,22 @@ RKRequestMethod RKRequestMethodTypeFromName(NSString *methodName) {
             parameters = [(RKParams *)self.params dictionaryOfPlainTextParams];
         else
             parameters = [_URL queryParameters];
+<<<<<<< HEAD
 
+=======
+        
+        NSString *hostAndPort = [GCOAuth hostAndPortFromURL:_URL];
+        
+>>>>>>>  - According to oauth specification include port into signature base unless it is 80 or 443
         if (self.method == RKRequestMethodPUT)
             echo = [GCOAuth URLRequestForPath:[_URL originalPath]
                                 PUTParameters:parameters
                                        scheme:[_URL scheme]
+<<<<<<< HEAD
                                          host:[_URL hostAndPort]
+=======
+                                         host:hostAndPort
+>>>>>>>  - According to oauth specification include port into signature base unless it is 80 or 443
                                   consumerKey:self.OAuth1ConsumerKey
                                consumerSecret:self.OAuth1ConsumerSecret
                                   accessToken:self.OAuth1AccessToken
@@ -353,7 +363,11 @@ RKRequestMethod RKRequestMethodTypeFromName(NSString *methodName) {
             echo = [GCOAuth URLRequestForPath:[_URL originalPath]
                                POSTParameters:parameters
                                        scheme:[_URL scheme]
+<<<<<<< HEAD
                                          host:[_URL hostAndPort]
+=======
+                                         host:hostAndPort
+>>>>>>>  - According to oauth specification include port into signature base unless it is 80 or 443
                                   consumerKey:self.OAuth1ConsumerKey
                                consumerSecret:self.OAuth1ConsumerSecret
                                   accessToken:self.OAuth1AccessToken
@@ -362,7 +376,11 @@ RKRequestMethod RKRequestMethodTypeFromName(NSString *methodName) {
             echo = [GCOAuth URLRequestForPath:[_URL originalPath]
                                 GETParameters:[_URL queryParameters]
                                        scheme:[_URL scheme]
+<<<<<<< HEAD
                                          host:[_URL hostAndPort]
+=======
+                                         host:hostAndPort
+>>>>>>>  - According to oauth specification include port into signature base unless it is 80 or 443
                                   consumerKey:self.OAuth1ConsumerKey
                                consumerSecret:self.OAuth1ConsumerSecret
                                   accessToken:self.OAuth1AccessToken
