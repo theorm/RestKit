@@ -425,20 +425,3 @@ static BOOL GCOAuthUseHTTPSCookieStorage = YES;
     return [(NSString *)string autorelease];
 }
 @end
-
-@implementation NSURL  (GCOAuthURL)
-
-- (NSString *)hostAndPort {
-    if ([self port] != nil && [[self port] intValue] != 80 && [[self port] intValue] != 443) {
-        return [NSString stringWithFormat:@"%@:%@", [self host], [self port]];
-    } else {
-        return [self host];
-    }
-}
-
-- (NSString *)originalPath {
-    return (NSString*)CFURLCopyPath((CFURLRef)self);
-}
-
-@end
-

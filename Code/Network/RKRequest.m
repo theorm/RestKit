@@ -341,7 +341,7 @@ RKRequestMethod RKRequestMethodTypeFromName(NSString *methodName) {
             parameters = [_URL queryParameters];
 
         if (self.method == RKRequestMethodPUT)
-            echo = [GCOAuth URLRequestForPath:[_URL originalPath]
+            echo = [GCOAuth URLRequestForPath:[_URL path]
                                 PUTParameters:parameters
                                        scheme:[_URL scheme]
                                          host:[_URL hostAndPort]
@@ -350,7 +350,7 @@ RKRequestMethod RKRequestMethodTypeFromName(NSString *methodName) {
                                   accessToken:self.OAuth1AccessToken
                                   tokenSecret:self.OAuth1AccessTokenSecret];
         else if (self.method == RKRequestMethodPOST)
-            echo = [GCOAuth URLRequestForPath:[_URL originalPath]
+            echo = [GCOAuth URLRequestForPath:[_URL path]
                                POSTParameters:parameters
                                        scheme:[_URL scheme]
                                          host:[_URL hostAndPort]
@@ -359,7 +359,7 @@ RKRequestMethod RKRequestMethodTypeFromName(NSString *methodName) {
                                   accessToken:self.OAuth1AccessToken
                                   tokenSecret:self.OAuth1AccessTokenSecret];
         else
-            echo = [GCOAuth URLRequestForPath:[_URL originalPath]
+            echo = [GCOAuth URLRequestForPath:[_URL path]
                                 GETParameters:[_URL queryParameters]
                                        scheme:[_URL scheme]
                                          host:[_URL hostAndPort]
