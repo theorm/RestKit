@@ -175,17 +175,8 @@ static BOOL GCOAuthUseHTTPSCookieStorage = YES;
     NSURL *URL = self.URL;
     NSString *URLString = [NSString stringWithFormat:@"%@://%@%@",
                            [[URL scheme] lowercaseString],
-<<<<<<< HEAD
-<<<<<<< HEAD
                            [[URL hostAndPort] lowercaseString],
                            [URL path]];
-=======
-                           [[GCOAuth hostAndPortFromURL:URL] lowercaseString],
-=======
-                           [[URL host] lowercaseString],
->>>>>>> Revert " - According to oauth specification include port into signature base unless it is 80 or 443"
-                           [[URL path] lowercaseString]];
->>>>>>>  - According to oauth specification include port into signature base unless it is 80 or 443
     
     // create components
     NSArray *components = [NSArray arrayWithObjects:
