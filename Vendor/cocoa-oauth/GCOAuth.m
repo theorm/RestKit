@@ -86,13 +86,6 @@ static BOOL GCOAuthUseHTTPSCookieStorage = YES;
                      consumerSecret:(NSString *)consumerSecret
                         accessToken:(NSString *)accessToken
                         tokenSecret:(NSString *)tokenSecret;
-
-@end
-@interface NSString (GCOAuthAdditions)
-
-// better percent escape
-- (NSString *)pcen;
-
 @end
 
 @implementation GCOAuth
@@ -183,7 +176,7 @@ static BOOL GCOAuthUseHTTPSCookieStorage = YES;
     NSString *URLString = [NSString stringWithFormat:@"%@://%@%@",
                            [[URL scheme] lowercaseString],
                            [[URL hostAndPort] lowercaseString],
-                           [[URL originalPath] lowercaseString]];
+                           [URL path]];
     
     // create components
     NSArray *components = [NSArray arrayWithObjects:
@@ -411,6 +404,17 @@ static BOOL GCOAuthUseHTTPSCookieStorage = YES;
 }
 
 @end
+
+@implementation NSURL  (GCOAuthURL)
+- (NSString *)hostAndPort {
+    if ([self port] != nil && [[self port] intValue] != 80 && [[self port] intValue] != 443) {
+        return [NSString stringWithFormat:@"%@:%@", [self host], [self port]];
+    } else {
+        return [self host];
+    }
+}
+@end
+
 @implementation NSString (GCOAuthAdditions)
 - (NSString *)pcen {
     CFStringRef string = CFURLCreateStringByAddingPercentEscapes(NULL,
